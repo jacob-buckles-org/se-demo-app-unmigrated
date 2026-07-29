@@ -17,7 +17,7 @@ jobs:
   # Docker workflow, which builds this app's own backend/frontend images.
   backend-integration:
     name: Backend integration (Postgres)
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     services:
       postgres:
         image: postgres:16
@@ -51,7 +51,7 @@ jobs:
 
   e2e:
     name: Dashboard E2E (Playwright)
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     defaults:
       run:
         working-directory: frontend
