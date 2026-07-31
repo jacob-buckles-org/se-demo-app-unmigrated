@@ -2,8 +2,8 @@ import { expect, test } from '@playwright/test'
 
 // The chart only mounts once the metrics fetch resolves and the hourly
 // rollup has run, so this budget has to cover fetch + aggregate + first
-// paint of the Recharts series.
-const CHART_RENDER_BUDGET_MS = 1_500
+// paint.
+const CHART_RENDER_BUDGET_MS = 400
 
 // One hourly point per service across a full day — the shape /api/metrics
 // returns for the dashboard's default "last 24 hours" window.
@@ -31,9 +31,7 @@ test.describe('request volume chart', () => {
 
     // Recharts renders one <path class="recharts-area-area"> per <Area>:
     // one for requests, one for errors.
-    await expect(chart.locator('path.recharts-area-area')).toHaveCount(2, {
-      timeout: CHART_RENDER_BUDGET_MS,
-    })
+    await expect(chart.locator('path.recharts-area-area')).toHaveCount(2)
   })
 
   test('labels the chart with its reporting window', async ({ page }) => {
