@@ -18,7 +18,7 @@ permissions:
 jobs:
   build-backend:
     name: Build backend image
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
 
@@ -37,7 +37,7 @@ jobs:
 
   build-frontend:
     name: Build frontend image
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
 
@@ -59,7 +59,7 @@ jobs:
   # service that builds but won't boot, a broken healthcheck).
   stack-smoke:
     name: Full-stack smoke (docker compose)
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
