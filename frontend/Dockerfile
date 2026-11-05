@@ -3,9 +3,11 @@ FROM node:22
 
 WORKDIR /app
 
-COPY . .
-
+# Lockfile first so the npm ci layer survives source-only changes.
+COPY package.json package-lock.json ./
 RUN npm ci
+
+COPY . .
 RUN npm run build
 
 EXPOSE 4173

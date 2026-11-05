@@ -1,0 +1,6 @@
+# Full CI builds the image after npm ci / build / E2E in the same job, so
+# these exist in the context. Leaving them in busts the COPY layer every run.
+node_modules
+dist
+playwright-report
+test-results
